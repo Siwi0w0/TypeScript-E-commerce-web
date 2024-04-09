@@ -1356,7 +1356,7 @@ const ProductList = () => {
     <div className='mt-12 grid gap-y-8'>
       {products.map((product) => {
         const { title, price, image, company } = product.attributes;
-        const dollarsAmount = formatAsDollars(price);
+        const dollarsAmount = formats(price);
 
         return (
           <Link key={product.id} to={`/products/${product.id}`}>
