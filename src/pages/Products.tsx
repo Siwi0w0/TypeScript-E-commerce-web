@@ -6,7 +6,7 @@ import { type LoaderFunction } from 'react-router-dom';
 const url = '/products';
 
 export const loader:LoaderFunction = async():Promise<ProductsResponse> => {
-  const response = await customFetch<ProductsResponse>(url);
+  const response = await customFetch<ProductsResponse>(url, {params:{search:'chair'}});
   console.log(response);
 
   return {...response.data};
