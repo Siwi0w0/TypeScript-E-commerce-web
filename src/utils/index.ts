@@ -9,3 +9,5 @@ export * from './customFetch';
 export * from './types';
 
 export * from './formatAsEuros';
+
+export * from './pagination';
