@@ -116,5 +116,3 @@ export {
   PaginationNext,
   PaginationPrevious,
 }
-
-export * from './pagination';
