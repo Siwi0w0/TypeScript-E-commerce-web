@@ -1,4 +1,4 @@
-import { formatEuros } from '@/utils';
+import { formatAsEuros } from '@/utils';
 import { useAppDispatch } from '@/hooks';
 import { Button } from './ui/button';
 import { editItem, removeItem } from '@/features/cart/cartSlice';
@@ -30,9 +30,27 @@ export const SecondColumn = ({
             }></span></p>
     </div>)
 }
-export const ThirdColumn = () =>{
-    return <h4>Third Column</h4>;
+export const ThirdColumn = ({
+    amount,cartID
+}:{
+    amount:number;
+    cartID:string
+}) =>{
+    const dispatch = useAppDispatch();
+
+    const removeItemFromCart = () => {
+        dispatch(removeItem(cartID));
+    }
+
+    const setAmount = (value:number) =>{
+        dispatch(editItem({amount:value,cartID}));
+    }
+    return (<div>
+        <SelectProductAmount amount={amount} setAmount={setAmount} mode={Mode.CartItem}/>
+        <Button variant='link' className='-ml-4' onClick={removeItemFromCart}>remove</Button>
+    </div>)
 }
-export const FourthColumn = () =>{
-    return <h4>Fourth Column</h4>;
+
+export const FourthColumn = ({price}:{price:string}) =>{
+    return <p className='font-medium sm:ml-auto'>{formatAsEuros(price)}</p>
 }
