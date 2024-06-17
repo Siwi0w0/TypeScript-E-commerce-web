@@ -2,19 +2,36 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
 import { useState } from 'react';
 
-function Header(){
+import { logoutUser } from '../features/user/userSlice';
+import { clearCart } from '../features/cart/cartSlice';
+import { useToast } from './ui/use-toast';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+
+const Header = () => {
     //navigate back to homepage if being in Cart page
     const navigate = useNavigate();
-    
-    //temp
-    const [user, setUser] = useState<{username: string} | null>({
-        username: 'demo user',
-    })
+    const dispatch = useAppDispatch();
+    const {toast} = useToast();
 
+    // //temp
+    // const [user, setUser] = useState<{username: string} | null>({
+    //     username: 'demo user',
+    // })
+
+    // const handleLogout = () => {
+    //     setUser(null);
+    //     navigate('/');
+    // };
+
+    // 正式logout function
+    const user = useAppSelector((state) => state.userState.user);
     const handleLogout = () => {
-        setUser(null);
-        navigate('/');
-    };
+        dispatch(clearCart());
+        dispatch(logoutUser());
+        toast({description:'Logged out.'});
+        navigate('/')
+    }
+
     return (
     <header>
         <div className='align-element flex justify-center sm:justify-end py-2'>

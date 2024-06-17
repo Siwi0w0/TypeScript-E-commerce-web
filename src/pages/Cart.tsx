@@ -4,8 +4,9 @@ import { useAppSelector } from '@/hooks';
 import { CartItemsList, SectionTitle, CartTotals } from '@/components';
 
 function Cart() {
-  // set up temp - make sure user is logged in
-  const user = null;
+  const user = useAppSelector((state)=>state.userState.user);
+  // // set up temp - make sure user is logged in
+  // const user = null;
 
   const numItemsInCart = useAppSelector((state)=>state.cartState.numItemsInCart)
   if(numItemsInCart === 0){
@@ -21,13 +22,12 @@ function Cart() {
           </div>
           <div className='lg:col-span-4 lg:pl-4'>
             <CartTotals />
-            {user? (<Button asChild className='mt-8 w-full'>
+            <Button asChild className='mt-8 w-full'>
+            {user? (
               <Link to='/checkout'>Proceed to Check out</Link>
-            </Button>) : (
-              <Button asChild className='mt-8 w-full'>
-              <Link to='/login'>Please login</Link>
-            </Button>
+            ):(<Link to='/login'>Please login</Link>
             )}
+            </Button>
           </div>
         </div>
     </div>
