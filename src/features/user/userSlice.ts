@@ -29,7 +29,7 @@ const userSlice = createSlice({
     loginUser:(state, action:PayloadAction<User>)=>{
       const user = action.payload;
       state.user = user;
-      localStorage.setItem('user', JSON.stringify('user'))
+      localStorage.setItem('user', JSON.stringify(user))
 
       if(user.username === 'demo user'){
         toast({description: 'Welcome Guest User!'});
@@ -46,3 +46,6 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+
+// Export the actions
+export const { loginUser, logoutUser } = userSlice.actions;

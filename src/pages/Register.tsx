@@ -14,6 +14,7 @@ export const action:ActionFunction = async ({request}):Promise< Response | null>
   console.log(data);
 
   try {
+    await new Promise((resolve)=>setTimeout(resolve, 2000));
     const result = await customFetch.post('./auth/local/register', data);
     console.log(result);
     toast({description:'Registered'});
@@ -42,7 +43,7 @@ function Register() {
             <FormInput type='text' name='username' />
             <FormInput type='email' name='email' />
             <FormInput type='password' name='password' />
-            <Button type='submit' variant='default' className='w-full mt-4'>Submit</Button>
+            <SubmitBtn text='Register' className='w-full mt-4' />
             <p className='text-center mt-4'>
               Already a member?
               <Button type='submit' asChild variant='link'>
