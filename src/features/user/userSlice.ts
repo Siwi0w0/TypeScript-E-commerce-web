@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {toast} from '@/components/ui/use-toast';
-import { get } from 'http';
 
 export type User = {
   username:string;

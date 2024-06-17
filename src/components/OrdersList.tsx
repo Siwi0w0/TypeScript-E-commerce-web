@@ -15,8 +15,6 @@ import {
 function OrdersList() {
     const {data:orders,meta} = useLoaderData() as OrdersResponse;
 
-
-
   return (
     <div className='mt-16'>
         <h4 className='mb-4 capitalize'>
@@ -38,7 +36,7 @@ function OrdersList() {
                 {orders.map((order)=> {
                     const {name, address, numItemsInCart, orderTotal, createdAt} = order.attributes;
                     return (
-                        <TableRow key={orders.id}>
+                        <TableRow key={order.id}>
                         <TableCell className="font-medium">{name}</TableCell>
                         <TableCell>{address}</TableCell>
                         <TableCell className='text-center'>{numItemsInCart}</TableCell>

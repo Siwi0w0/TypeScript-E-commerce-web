@@ -8,7 +8,6 @@ import {
 } from '@/components';
 import { ReduxStore } from '@/store';
 import { type OrdersResponse } from '@/utils';
-import { log } from 'console';
 
 // set up loader
 export const loader = (store:ReduxStore):LoaderFunction => async({request}):Promise<OrdersResponse|Response|null>=>{

@@ -5,7 +5,6 @@ import { SubmitBtn, FormInput } from '@/components';
 import { customFetch } from '@/utils';
 import { toast } from '@/components/ui/use-toast';
 import { AxiosError } from 'axios';
-import { log } from 'console';
 
 // action
 export const action:ActionFunction = async ({request}):Promise< Response | null> => {
