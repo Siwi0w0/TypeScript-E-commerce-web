@@ -50,7 +50,7 @@ function PaginationContainer() {
       <PaginationItem>
         <PaginationPrevious to={prevUrl} />
       </PaginationItem>
-      <PaginationItem>
+      <PaginationItem className='flex'>
         {renderPagination}
       </PaginationItem>
       <PaginationItem>
